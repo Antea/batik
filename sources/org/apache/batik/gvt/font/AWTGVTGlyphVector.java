@@ -189,6 +189,7 @@ public class AWTGVTGlyphVector implements GVTGlyphVector {
         // outline of this glyph
         Stroke stroke = tpi.strokeStroke;
         Paint  paint  = tpi.strokePaint;
+        try{
         if ((stroke != null) && (paint != null)) {
             if (outline == null)
                 outline = getOutline();
@@ -199,6 +200,9 @@ public class AWTGVTGlyphVector implements GVTGlyphVector {
             else
                 // bounds2D = bounds2D.createUnion(strokeBounds);
                 bounds2D.add(strokeBounds);
+        }
+        }catch(Exception e){
+            bounds2D = null;
         }
         if (bounds2D == null)
             return null;
@@ -947,7 +951,9 @@ public class AWTGVTGlyphVector implements GVTGlyphVector {
             if (stroke != null && strokePaint != null) {
                 graphics2D.setStroke(stroke);
                 graphics2D.setPaint(strokePaint);
+                try{
                 graphics2D.draw(outline);
+                }catch(Exception e){}
             }
         }
     }
