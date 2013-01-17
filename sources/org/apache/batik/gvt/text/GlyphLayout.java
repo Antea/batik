@@ -999,7 +999,7 @@ public class GlyphLayout implements TextSpanLayout {
             y += dy.floatValue();
 
         Stroke overlineStroke =
-            new BasicStroke(overlineThickness);
+            new BasicStroke(Math.abs(overlineThickness));
         Rectangle2D logicalBounds = gv.getLogicalBounds();
 
         return overlineStroke.createStrokedShape(
@@ -1021,7 +1021,7 @@ public class GlyphLayout implements TextSpanLayout {
         y += underlineThickness*1.5;
 
         BasicStroke underlineStroke =
-            new BasicStroke(underlineThickness);
+            new BasicStroke(Math.abs(underlineThickness));
 
         // Not certain what should be done here...
         aci.first();
@@ -1045,7 +1045,7 @@ public class GlyphLayout implements TextSpanLayout {
         float strikethroughThickness = metrics.getStrikethroughThickness();
 
         Stroke strikethroughStroke =
-            new BasicStroke(strikethroughThickness);
+            new BasicStroke(Math.abs(strikethroughThickness));
 
         // Not certain what should be done here...
         aci.first();

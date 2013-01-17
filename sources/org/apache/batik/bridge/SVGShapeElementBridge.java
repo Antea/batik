@@ -57,7 +57,11 @@ public abstract class SVGShapeElementBridge extends AbstractGraphicsNodeBridge {
         associateSVGContext(ctx, e, shapeNode);
 
         // delegates to subclasses the shape construction
-        buildShape(ctx, e, shapeNode);
+        try {
+            buildShape(ctx, e, shapeNode);
+        } catch (BridgeException ex) {
+            return null;
+        }
 
         // 'shape-rendering' and 'color-rendering'
         RenderingHints hints = null;
