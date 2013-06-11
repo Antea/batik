@@ -121,9 +121,12 @@ public class StrokeShapePainter implements ShapePainter {
         if ((paint == null) || (stroke == null))
             return null;
 
-        if (strokedShape == null)
-            strokedShape = stroke.createStrokedShape(shape);
-
+        try {
+            if (strokedShape == null) {
+                strokedShape = stroke.createStrokedShape(shape);
+            }
+        } catch (Exception e) {
+        }
         return strokedShape;
     }
 
