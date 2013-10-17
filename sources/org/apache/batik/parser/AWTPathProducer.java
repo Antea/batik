@@ -142,8 +142,10 @@ public class AWTPathProducer implements PathHandler, ShapeProducer {
     public void closePath() throws ParseException {
         path.closePath();
         Point2D pt = path.getCurrentPoint();
-        currentX = (float)pt.getX();
-        currentY = (float)pt.getY();
+        if (null != pt) {
+            currentX = (float)pt.getX();
+            currentY = (float)pt.getY();
+        }
     }
 
     /**
